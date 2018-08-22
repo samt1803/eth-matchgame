@@ -7,11 +7,12 @@ It is a two player game in the form of a webapp that holds its state in the ethe
 
 ## Rules of the game
 
-... genral
-
-### Making a move
-
-### Winner and looser
+The rules are as follows:
+* Players alternate, one player makes a move, then its the others turn
+* there are 4 rows of matches, 1 match in the first row, 3 in the second, 5 in the third and 7 in the fourth row
+* if it is one players turn he has to remove one or more matches from one of the rows
+* he also can remove all the matches from one row
+* the player that removes or has to remove the last match looses
 
 ## Try out on IPFS
 
@@ -21,9 +22,9 @@ rinkeby
 ## Run the project locally
 
 > Requirements: 
+> * Ubuntu 16.04 (other OSs will work of course but according to the project definition is should be run in that OS)
 > * node.js
 > * either npm or yarn
-> * Ubuntu 16.04 (other OSs will work of course but according to the project definition is should be run in that OS)
 > * Browser with Metamask (Chrome or Brave)
 > * (uPort?)
 
