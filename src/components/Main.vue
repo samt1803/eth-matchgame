@@ -139,7 +139,7 @@ export default {
     },
     makeMove() {
       if (this.uportAsProvider) {
-        this.showSnackbarMessage('Please approve transaction on the phone int he uPort app!');
+        this.showSnackbarMessage('Please approve transaction on the phone int the uPort app!');
       }
       this.waiting = true;
       gameConnector.makeMove(this.pickedRow, this.pickedAmount)
