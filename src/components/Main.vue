@@ -135,6 +135,10 @@ export default {
       this.showSnackbar = true;
     },
     startGame() {
+      this.waiting = true;
+      if (this.uportAsProvider) {
+        this.showSnackbarMessage('Please approve transaction on the phone int the uPort app!');
+      }
       gameConnector.startGame(this.otherPlayerAddress).then(state => this.setGameState(state));
     },
     makeMove() {
