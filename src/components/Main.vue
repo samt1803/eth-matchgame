@@ -93,6 +93,7 @@
 
 <script>
 import GameConnector from '../services/GameContractConnector';
+
 let gameConnector;
 export default {
   name: 'Main',

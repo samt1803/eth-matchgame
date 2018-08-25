@@ -3,7 +3,6 @@ import contract from 'truffle-contract';
 import { Connect, SimpleSigner, MNID } from 'uport-connect';
 import GameContract from '../../build/contracts/Matchgame.json';
 
-
 export default class {
   contractInstance = null;
   successCallback = null;
