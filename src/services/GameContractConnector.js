@@ -17,9 +17,9 @@ export default class {
 
   connectToContract = (useuPort) => {
     const gameContract = contract(GameContract);
-    this.contractInstance = gameContract.at(GameContract.networks[5777].address);
+    // this.contractInstance = gameContract.at(GameContract.networks[5777].address);
     // contract address on rinkeby
-    // this.contractInstance = gameContract.at('0xa1959f6bae012814be6808271214fdf0d58b0614');
+    this.contractInstance = gameContract.at('0xa1959f6bae012814be6808271214fdf0d58b0614');
     if (useuPort) {
       this.uport = new Connect('Matchgame', {
         clientId: '2okuJ48dEUSMVzVv5obeeaxph4qs9gyixfr',

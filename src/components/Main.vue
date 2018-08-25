@@ -44,8 +44,8 @@
                 <div id="app-4">
                   <ol>
                     <li v-for="(e, index) in gameState[0]" :key="'row'+e" >
-                      <img v-for="m in e" :key="'a'+m" style="height:80px" alt="match" src="../assets/match.jpg">
-                      <img v-for="n in originalGameState[index] - e" :key="'b'+n" style="height:80px" alt="match" src="../assets/match_bw.jpg">
+                      <img v-for="m in e" :key="'a'+m" style="height:80px" alt="match" :src="matchImg">
+                      <img v-for="n in originalGameState[index] - e" :key="'b'+n" style="height:80px" alt="match" :src="matchImgBw">
                     </li>
                   </ol>
                 </div>
@@ -98,6 +98,8 @@ let gameConnector;
 export default {
   name: 'Main',
   data: () => ({
+    matchImg: 'https://ipfs.io/ipfs/QmaUb784ooyfavN42hwcEB2kVvDAskSgwCB2RfErMGugdZ',
+    matchImgBw: 'https://ipfs.io/ipfs/QmY7gFpaNECryThXMdYfcunAEVJEwdKUztUmfQGDaaJ2dx',
     showAuthPick: false,
     originalGameState: [1, 3, 5, 7],
     ownAddress: null,
