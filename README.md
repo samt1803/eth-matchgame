@@ -26,9 +26,9 @@ The rules are as follows:
 Install truffle gobally
 
 ```sh
-$ npm install -g truffle
+$ sudo npm install -g truffle
 # or with yarn
-$ yarn global add truffle
+$ sudo yarn global add truffle
 ```
 Clone this project and cd into the folder
 ```sh
@@ -63,9 +63,9 @@ To run the app locally you need to install ganache-cli as the local test blockch
 
 Install the GUI version of Ganache for your system from [here](https://github.com/trufflesuite/ganache/releases) or install the CLI version:
 ```sh
-$ npm install -g ganache-cli
+$ sudo npm install -g ganache-cli
 # or with yarn
-$ yarn global add ganache-cli
+$ sudo yarn global add ganache-cli
 ```
 Then start whichever version you installed. It needs to be configured to run on port 8545. Also connect your Metamask to Ganache. Metamask needs to be set up and you need to import an account from ganache into Metamask.
 > IMPORTANT: You need to reset the Metamask transaction history every time you restart Ganache! Otherwise it can desync and then the nonce in Metamask and the nonce in Ganache are not the same and you cant make any tranactions. To do this go to the settings in Metamask, scroll down and klick "RESET ACCOUNT".
