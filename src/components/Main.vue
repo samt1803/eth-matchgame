@@ -30,36 +30,30 @@
             <span v-if="uportAsProvider">Own uPort address:</span>
             <span v-if="!uportAsProvider">Own Metamask address:</span>
             <span style="color:yellow"> {{this.ownAddress}}</span></div>
-          <!-- <div>Uport: <span style="color:yellow">{{this.uportUser.name}}</span>: <span style="color:yellow">{{this.uportWallet.amount}}</span> EDT</div> -->
         </div>
         </md-toolbar>
                 <div>Other Player: {{gameState[3]}}</div>
                 <md-button class="md-primary md-raised" @click="modalActive = true">Start new game</md-button>
-                <!-- <md-button class="md-raised md-primary" @click="startGame()">Start Game</md-button> -->
                 <md-button class="md-raised md-primary" @click="getState()">Get state</md-button><br/>
                 <md-content v-if="gameState[2] == '0'" class="md-primary">Nobody won yet</md-content>
                 <md-content v-if="gameState[2] == '1'" class="md-accent">You lost</md-content>
                 <md-content v-if="gameState[2] == '2'" style="background:limegreen">You won the game! \o/ </md-content>
                 <!-- <div>{{gameState}}</div> -->
                 <div id="app-4">
-                  <ol>
+                  <ol style="max-width:400px; margin:auto; margin-top:30px">
                     <li v-for="(e, index) in gameState[0]" :key="'row'+e" >
                       <img v-for="m in e" :key="'a'+m" style="height:80px" alt="match" :src="matchImg">
                       <img v-for="n in originalGameState[index] - e" :key="'b'+n" style="height:80px" alt="match" :src="matchImgBw">
                     </li>
                   </ol>
                 </div>
-        <div class="md-layout md-gutter" style="max-width:500px">
-        <div class="md-layout-item">
-         <md-field>
+         <md-field style="max-width:200px; margin:auto; margin-top:30px">
           <label for="pickedRow">Row</label>
           <md-select v-model="pickedRow" name="pickedRow" id="pickedRow">
             <md-option v-for="i in 4" :key="i" :value="i-1">{{i}}</md-option>
           </md-select>
         </md-field>
-        </div>
-        <div class="md-layout-item">
-        <md-field>
+        <md-field  style="max-width:200px; margin:auto; margin-bottom:30px">
           <label for="pickedAmount">Amount</label>
           <md-select v-model="pickedAmount" name="pickedAmount" id="pickedAmount">
             <md-option v-for="i in 7" :key="i" :value="i">{{i}}</md-option>
@@ -68,8 +62,6 @@
         <md-content v-if="gameState[1]" class="md-primary">It is your turn</md-content>
         <md-content v-if="!gameState[1]" class="md-accent">it is NOT your turn</md-content>
         <md-button class="md-raised md-primary" @click="makeMove()">Remove Matches</md-button><br/>
-        </div>
-        </div>
             <md-progress-bar v-if="waiting" md-mode="indeterminate"></md-progress-bar>
 
     <md-snackbar :md-position='"left"' :md-duration="5000" :md-active.sync="showSnackbar" md-persistent>
@@ -106,7 +98,7 @@ export default {
     modalActive: false,
     otherPlayerAddress: null,
     pickedRow: 0,
-    pickedAmount: 0,
+    pickedAmount: 1,
     snackbarMessage: '',
     showSnackbar: false,
     waiting: false,
