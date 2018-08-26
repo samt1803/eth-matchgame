@@ -88,7 +88,7 @@ $ yarn dev
 ```
 Now you can open the DApp in the browser with Metamask on localhost:8080.
 To use the locally hostes app with the contracts deployed on rinkeby just change the contracts address in the GameContractConnector.js file. See line 22.
-The address of the contract on the rinkeby network (0xc9d3b722372d7e82a3a4a131bbb26841bbf788f8) is also in the deployed_addresses.txt file.
+The address of the contract on the rinkeby network (0xc9d3b722372d7e82a3a4a131bbb26841bbf788f8) is also in the deployed_addresses.txt file. If you want to identify yourself with uPort instead of Metamask you need to do this since uPort uses rinkeby by default.
 
 ## Play the game
 To actually play the game you need two accounts.
@@ -102,7 +102,8 @@ Then you first need to start a new game and enter the address of the other playe
 
 ### uPort
 
-To connect with uPort you have to have the app installed on an Android or iPhone and have made an account by registering an identity on the rinkeby network (default). The when you klick 'Continue with uPort', you have to scan the barcode to log in. After that, if you start a new game or make a move you dont have to scan anything, the request for approval will just pop up in the uPort app.
+The uPort identity contracts are deployed on rinkeby (default settings). So if you want to use uPort, you need a version of the webinterface that interacts with the contract in rinkeby instead of the local one in Ganache. Or try the version deployed to ipfs, that one uses the rinkeby contract.
+To connect with uPort you have to have the app installed on an Android or iPhone and have made an account by registering an identity on the rinkeby network (default). The when you klick 'Continue with uPort', you have to scan the barcode to log in. After that, if you start a new game or make a move you dont have to scan anything, the request for approval will just pop up in the uPort app. To use uPort you don't need any test Ether, uPort pays for the transactions.
 
 ### Try out on IPFS
 The game is also hosten on ipfs and connected to the rinkeby chain. 
@@ -111,7 +112,7 @@ you can access it for exampe here:
 or here 
 [https://ipfs.infura.io/ipfs/QmS3nwMD25fhhcHTKiQQu8NSsx3wqcQciZaKP74T4d7Xxj/](https://ipfs.infura.io/ipfs/QmS3nwMD25fhhcHTKiQQu8NSsx3wqcQciZaKP74T4d7Xxj/)
 
-If it should not load try again in a few hours, it was somehow not always accessible.
+If it should not load try again in a few hours, it was somehow not always accessible. To play on rinkeby you need an account with test ether. You can get them [here](https://faucet.rinkeby.io/) or at other faucets.
 
 #### Build version for ipfs
 
