@@ -77,6 +77,9 @@ $ truffle migrate --reset
 ```
 To compile and run the webapp first install all dependencies
 ```sh
+# make sure your build essentials are installed or npm install will fail
+$ sudo apt-get install build-essential
+# then install the dependencies
 $ npm install
 # or with yarn:
 $ yarn
