@@ -87,8 +87,8 @@ $ npm run dev
 $ yarn dev
 ```
 Now you can open the DApp in the browser with Metamask on localhost:8080.
-To use the locally hostes app with the contracts deployed on rinkeby just change the contracts address in the GameContractConnector.js file. See line 22.
-The address of the contract on the rinkeby network (0xc9d3b722372d7e82a3a4a131bbb26841bbf788f8) is also in the deployed_addresses.txt file. If you want to identify yourself with uPort instead of Metamask you need to do this since uPort uses rinkeby by default.
+To use the locally hosted app with the contracts deployed on rinkeby just change the contracts address in the GameContractConnector.js file. See line 22. Also if you use Metamask dont forget to change the network in Metamask to rinkeby.
+The address of the contract on the rinkeby network (0xc9d3b722372d7e82a3a4a131bbb26841bbf788f8) is also in the deployed_addresses.txt file. If you want to identify yourself with uPort instead of Metamask you need to use the rinkeby network since uPort uses rinkeby by default.
 
 ## Play the game
 To actually play the game you need two accounts.
