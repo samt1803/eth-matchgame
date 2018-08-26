@@ -110,8 +110,7 @@ The game is also hosten on ipfs and connected to the rinkeby chain.
 you can access it for exampe here:
 [https://ipfs.io/ipfs/QmS3nwMD25fhhcHTKiQQu8NSsx3wqcQciZaKP74T4d7Xxj/](https://ipfs.io/ipfs/QmS3nwMD25fhhcHTKiQQu8NSsx3wqcQciZaKP74T4d7Xxj/)
 or here 
-[https://ipfs.infura.io/ipfs/QmS3nwMD25fhhcHTKiQQu8NSsx3wqcQciZaKP74T4d7Xxj/]
-(https://ipfs.infura.io/ipfs/QmS3nwMD25fhhcHTKiQQu8NSsx3wqcQciZaKP74T4d7Xxj/)
+[https://ipfs.infura.io/ipfs/QmS3nwMD25fhhcHTKiQQu8NSsx3wqcQciZaKP74T4d7Xxj/](https://ipfs.infura.io/ipfs/QmS3nwMD25fhhcHTKiQQu8NSsx3wqcQciZaKP74T4d7Xxj/)
 
 If it should not load try again in a few hours, it was somehow not always accessible.
 
