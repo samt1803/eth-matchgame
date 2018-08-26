@@ -52,7 +52,11 @@ to deploy them to the testchain, that truffle starts in its developers mode, and
 ```
 > test
 ```
-to run the test. A word on the structure of the tests and the coverage is further down.
+to run the test. The tests make sure that only the right users can interact with the game a their time. The tests include negative tests, that check that some functions do not work when they are not supposed to.
+
+The contracts use tested and audited library contracts by Zeppelin solutions:
+* Pausable: this adds the functionality of a circuitbreaker. The owner can pause the contract, then ste state can not be change, only the function to get the state can be called. This functionality is also covered in the tests. The pausable contract also uses the Ownable contract to make the pause function only availabe to the owner.
+* SafeMath: this adds a over and underflow safe way to add, substract, multiply and divide
 
 ### Run the webinterface locally in development mode
 To run the app locally you need to install ganache-cli as the local test blockchain. The webapp part can be hosted with node scripts, that can be started with npm or yarn.
@@ -85,6 +89,7 @@ $ yarn dev
 ```
 Now you can open the DApp in the browser with Metamask on localhost:8080.
 To use the locally hostes app with the contracts deployed on rinkeby just change the contracts address in the GameContractConnector.js file. See line 22.
+The address of the contract on the rinkeby network (0xc9d3b722372d7e82a3a4a131bbb26841bbf788f8) is also in the deployed_addresses.txt file.
 
 ## Play the game
 To actually play the game you need two accounts.
