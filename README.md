@@ -20,7 +20,8 @@ The rules are as follows:
 > * Ubuntu 16.04 (other OSs will work but according to the project definition it should be run in that OS)
 > * node.js
 > * either npm or yarn
-> * Browser with Metamask (Chrome or Brave)
+> * Browser with Metamask (Chrome, Firefox, Brave)
+> * Ganache: GUI-version! ganache-cli did not work with Metamask for me in Ubuntu 16.04
 > * uPort
 
 Install truffle gobally
@@ -59,15 +60,10 @@ The contracts use tested and audited library contracts by Zeppelin solutions:
 * SafeMath: this adds a over and underflow safe way to add, substract, multiply and divide
 
 ### Run the webinterface locally in development mode
-To run the app locally you need to install ganache-cli as the local test blockchain. The webapp part can be hosted with node scripts, that can be started with npm or yarn.
+To run the app locally you need to install Ganache as the local test blockchain. The webapp part can be hosted with node scripts, that can be started with npm or yarn.
 
-Install the GUI version of Ganache for your system from [here](https://github.com/trufflesuite/ganache/releases) or install the CLI version:
-```sh
-$ sudo npm install -g ganache-cli
-# or with yarn
-$ sudo yarn global add ganache-cli
-```
-Then start whichever version you installed. It needs to be configured to run on port 8545. Also connect your Metamask to Ganache. Metamask needs to be set up and you need to import an account from ganache into Metamask.
+Install the GUI version of Ganache for your system from [here](https://github.com/trufflesuite/ganache/releases). Do NOT use ganache-cli since in Ubuntu 16.04 Metamask did not play well with it, Metamask threw an error: {code: -32603, message: "Internal JSON-RPC error."}, which seems to be a bug in Metamask or ganache-cli. With Ganache Gui version it works, and it also has the benefit that the accounts dont change after each restart.
+Then start Ganache and configure it to run on port 8545. Also connect your Metamask to Ganache. Metamask needs to be set up and you need to import an account from Ganache into Metamask.
 > IMPORTANT: You need to reset the Metamask transaction history every time you restart Ganache! Otherwise it can desync and then the nonce in Metamask and the nonce in Ganache are not the same and you cant make any tranactions. To do this go to the settings in Metamask, scroll down and klick "RESET ACCOUNT".
 
 Now you need to deploy the contracts into ganache:
