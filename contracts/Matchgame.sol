@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.5.0;
 
 import "../installed_contracts/zeppelin/contracts/math/SafeMath.sol";
 import "../installed_contracts/zeppelin/contracts/lifecycle/Pausable.sol";

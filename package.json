@@ -2,7 +2,7 @@
   "name": "matchgame",
   "version": "1.0.0",
   "description": "A blockchain connnected two player game",
-  "author": "Sam <christoph-samuel.pitter@maibornwolff.de>",
+  "author": "Sam <christoph-samuel.pitter@>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
