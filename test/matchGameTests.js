@@ -54,64 +54,62 @@ it('should fail when making a move as player 2 when it is player ones turn', () 
     .then(result => assert.isFalse(result[1], 'it is not the expected players turn'))
   // then try to make move
     .then(() => contractInstance.makeMove(0, 1, { from: accounts[1] }))
-    .catch(err => {
-      console.log(err);
-      
-      assert.isTrue(err.toString().startsWith('Error: Returned error: VM Exception while processing transaction: revert'),
-      'not the expectes revert error was thrown')
-    })
+    .catch(err => assert.isTrue(err.toString().startsWith('Error: Returned error: VM Exception while processing transaction: revert'),
+      'not the expectes revert error was thrown'))
 )
 
-// it('should calculate and show the correct winner', () =>
-//   contractInstance.startNewGame(accounts[1], { from: accounts[0] })
-//     .then(() => contractInstance.getGame({ from: accounts[1] }))
-//     .then(result => assert.equal(result[1], true, 'it is not the expected players turn'))
-//     // make moves so that accounts[1]/player2 wis
-//     .then(() => contractInstance.makeMove(0, 1, { from: accounts[1] }))
-//     .then(() => contractInstance.makeMove(1, 3, { from: accounts[0] }))
-//     .then(() => contractInstance.makeMove(2, 5, { from: accounts[1] }))
-//     .then(() => contractInstance.makeMove(3, 7, { from: accounts[0] }))
-//     .then(() =>
-//       // looser should see that he has lost
-//       contractInstance.getGame({ from: accounts[0] }).then((result) => {
-//         const state = result[0].map(e => e.c[0])
-//         assert.deepEqual(state, [0, 0, 0, 0], 'game is not in the expected state 0,0,0,0')
-//         assert.equal(result[2].c[0], '1', 'not the right player won')
-//       })
-//         // winner should see that he has won
-//         .then(() =>
-//           contractInstance.getGame({ from: accounts[1] }).then((result) => {
-//             const state = result[0].map(e => e.c[0])
-//             assert.deepEqual(state, [0, 0, 0, 0], 'game is not in the expected state 0,0,0,0')
-//             assert.equal(result[2].c[0], '2', 'not the right player won')
-//           })
-//         )
-//     )
-// )
+it('should calculate and show the correct winner', () =>
+  contractInstance.startNewGame(accounts[1], { from: accounts[0] })
+    .then(() => contractInstance.getGame({ from: accounts[1] }))
+    .then(result => assert.equal(result[1], true, 'it is not the expected players turn'))
+    // make moves so that accounts[1]/player2 wis
+    .then(() => contractInstance.makeMove(0, 1, { from: accounts[1] }))
+    .then(() => contractInstance.makeMove(1, 3, { from: accounts[0] }))
+    .then(() => contractInstance.makeMove(2, 5, { from: accounts[1] }))
+    .then(() => contractInstance.makeMove(3, 7, { from: accounts[0] }))
+    .then(() =>
+      // looser should see that he has lost
+      contractInstance.getGame({ from: accounts[0] }).then((result) => {
+        const state = result[0].map(e => e.toNumber())
+        assert.deepEqual(state, [0, 0, 0, 0], 'game is not in the expected state 0,0,0,0')
+        assert.equal(result[2].toNumber(), '1', 'not the right player won')
+      })
+        // winner should see that he has won
+        .then(() =>
+          contractInstance.getGame({ from: accounts[1] }).then((result) => {
+            const state = result[0].map(e => e.toNumber())
+            assert.deepEqual(state, [0, 0, 0, 0], 'game is not in the expected state 0,0,0,0')
+            assert.equal(result[2].toNumber(), '2', 'not the right player won')
+          })
+        )
+    )
+)
 
-// it('owner should be able to pause the game. Then creating new game or moving is blocked', () =>
-//   contractInstance.pause({ from: accounts[1] })
-//   // make shure another account than the owner (accounts[0]) cannot pause
-//     .catch(err => assert.isTrue(err.toString().startsWith('Error: VM Exception while processing transaction: revert')))
-//     .then(() => contractInstance.pause({ from: accounts[0] }))
-//     // assert that the transaction was successful
-//     .then(result => assert.isTrue(result.receipt.status.endsWith('1'), 'transaction to create account was not successful'))
-//   // then starting new game or making a move should not work
-//     .then(() => contractInstance.startNewGame(accounts[1]))
-//     .catch(err => assert.isTrue(err.toString().startsWith('Error: VM Exception while processing transaction: revert'),
-//       'it is still possible to create a game when paused'))
-//     .then(() => contractInstance.makeMove(1, 1))
-//     .catch(err => assert.isTrue(err.toString().startsWith('Error: VM Exception while processing transaction: revert'),
-//       'it is still possible to make a move when paused'))
-// )
+it('owner should be able to pause the game. Then creating new game or moving is blocked', done => {
+  contractInstance.pause({ from: accounts[1] })
+  // make shure another account than the owner (accounts[0]) cannot pause
+    .catch(err => assert.isTrue(err.toString().startsWith('Error: Returned error: VM Exception while processing transaction: revert')))
+    .then(() => contractInstance.pause({ from: accounts[0] }))
+    // assert that the transaction was successful
+    .then(result => assert.isTrue(result.receipt.status === true, 'transaction to create account was not successful'))
+  // then starting new game or making a move should not work
+    .then(() => contractInstance.startNewGame(accounts[1]))
+    .catch(err => assert.isTrue(err.toString().startsWith('Error: Returned error: VM Exception while processing transaction: revert'),
+      'it is still possible to create a game when paused'))
+    .then(() => contractInstance.makeMove(1, 1))
+    .catch(err => assert.isTrue(err.toString().startsWith('Error: Returned error: VM Exception while processing transaction: revert'),
+      'it is still possible to make a move when paused'));
+      done();
+    }
+)
 
-// it('only the owner should be able to UNpause the game', () => contractInstance.unpause({ from: accounts[1] })
-//   // make shure another account than the owner (accounts[0]) cannot unpause
-//   .catch(err => assert.isTrue(err.toString().startsWith('Error: VM Exception while processing transaction: revert'),
-//     'someone not the owner was able to unpause'))
-//   .then(() => contractInstance.unpause())
-//   .then(result => assert.isTrue(result.receipt.status.endsWith('1'), 'unpausing by the owner didn\'t work'))
-//   // it shoould no be possible to create a game again
-//   .then(() => contractInstance.startNewGame(accounts[1]))
-//   .then(result => assert.isTrue(result.receipt.status.endsWith('1'), 'creating game after unpausing didn\'t work'))
-// )
+it('only the owner should be able to UNpause the game', () => contractInstance.unpause({ from: accounts[1] })
+  // make shure another account than the owner (accounts[0]) cannot unpause
+  .catch(err => assert.isTrue(err.toString().startsWith('Error: Returned error: VM Exception while processing transaction: revert'),
+    'someone not the owner was able to unpause'))
+  .then(() => contractInstance.unpause())
+  .then(result => assert.isTrue(result.receipt.status === true, 'unpausing by the owner didn\'t work'))
+  // it shoould no be possible to create a game again
+  .then(() => contractInstance.startNewGame(accounts[1]))
+  .then(result => assert.isTrue(result.receipt.status === true, 'creating game after unpausing didn\'t work'))
+)
